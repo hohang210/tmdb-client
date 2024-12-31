@@ -15,12 +15,17 @@
 
         <!-- Spring Dependencies' version -->
         <spring-boot.version>3.1.0</spring-boot.version>
+        <spring-cloud.version>2022.0.4</spring-cloud.version>
 
         <!-- Sonar -->
         <sonar-maven-plugin.version>3.10.0.2594</sonar-maven-plugin.version>
         <sonar.exclusions>
-            **/dto/**/*
+            **/dto/**/*,
+            **/config/**/*
         </sonar.exclusions>
+
+        <!-- JSON -->
+        <jackson-annotations.version>2.18.1</jackson-annotations.version>
 
         <!-- Styling -->
         <spotless.version>2.41.1</spotless.version>
@@ -37,15 +42,86 @@
         <maven-surefire-plugin.version>3.2.2</maven-surefire-plugin.version>
         <jacoco.version>0.8.8</jacoco.version>
         <jacoco.minimum-rate>0.80</jacoco.minimum-rate>
+
+        <!-- Modules -->
+        <property-utils.version>0.1.0-SNAPSHOT</property-utils.version>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <url>http://113.65.33.42:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus</id>
+            <url>http://113.65.33.42:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <url>http://113.65.33.42:8081/repository/maven-public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>nexus</id>
+            <url>http://113.65.33.42:8081/repository/maven-public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
+        <!-- Shared Modules -->
+        <dependency>
+            <groupId>net.ow.shared</groupId>
+            <artifactId>property-utils</artifactId>
+            <version>${property-utils.version}</version>
+        </dependency>
+
+        <!-- Spring Core -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <optional>true</optional>
+        </dependency>
+
+        <!-- JSON -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson-annotations.version}</version>
         </dependency>
 
         <!-- Testing -->
@@ -126,6 +202,7 @@
                     <configuration>
                         <excludes>
                             <exclude>**/dto/**/*</exclude>
+                            <exclude>**/config/**/*</exclude>
                         </excludes>
                     </configuration>
                 </plugin>
