@@ -22,6 +22,10 @@
             **/dto/**/*
         </sonar.exclusions>
 
+        <!-- Styling -->
+        <spotless.version>2.41.1</spotless.version>
+        <google-java-format.version>1.20.0</google-java-format.version>
+
         <!-- Lombok -->
         <lombok.version>1.18.30</lombok.version>
         <org.projectlombok.version>1.18.20</org.projectlombok.version>
@@ -84,6 +88,35 @@
     </dependencies>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>${spotless.version}</version>
+                <configuration>
+                    <java>
+                        <includes>
+                            <include>src/**/*.java</include>
+                        </includes>
+                        <googleJavaFormat>
+                            <version>${google-java-format.version}</version>
+                            <style>AOSP</style>
+                        </googleJavaFormat>
+                        <importOrder/>
+                        <removeUnusedImports/>
+                    </java>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                            <goal>apply</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
         <pluginManagement>
             <plugins>
                 <plugin>
