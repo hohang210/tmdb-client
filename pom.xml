@@ -124,7 +124,6 @@
             <version>${jackson-annotations.version}</version>
         </dependency>
 
-
         <!-- Testing -->
         <dependency>
             <groupId>org.springframework</groupId>
