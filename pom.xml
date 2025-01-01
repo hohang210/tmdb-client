@@ -50,18 +50,18 @@
     <distributionManagement>
         <repository>
             <id>nexus</id>
-            <url>http://113.65.33.42:8081/repository/maven-releases/</url>
+            <url>http://www.oliverw.dns-dynamic.net:8081/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
             <id>nexus</id>
-            <url>http://113.65.33.42:8081/repository/maven-snapshots/</url>
+            <url>http://www.oliverw.dns-dynamic.net:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
     <repositories>
         <repository>
             <id>nexus</id>
-            <url>http://113.65.33.42:8081/repository/maven-public</url>
+            <url>http://www.oliverw.dns-dynamic.net:8081/repository/maven-public</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -73,7 +73,7 @@
     <pluginRepositories>
         <pluginRepository>
             <id>nexus</id>
-            <url>http://113.65.33.42:8081/repository/maven-public</url>
+            <url>http://www.oliverw.dns-dynamic.net:8081/repository/maven-public</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
