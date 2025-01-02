@@ -1,19 +1,30 @@
 package net.ow.movie.tmdb.dto.search;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import java.math.BigDecimal;
 import lombok.Data;
+import net.ow.movie.tmdb.dto.constant.MediaType;
 
 @Data
-public class SearchResultDTO {
-    private Integer id;
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.EXISTING_PROPERTY,
+        property = "media_type",
+        visible = true)
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = SearchMovieDTO.class, name = MediaType.MOVIE),
+    @JsonSubTypes.Type(value = SearchTVShowDTO.class, name = MediaType.TV_SHOW),
+    @JsonSubTypes.Type(value = SearchPersonDTO.class, name = MediaType.PERSON)
+})
+public abstract class SearchResultDTO {
+    protected Integer id;
 
-    private String title;
+    @JsonAlias("media_type")
+    protected String mediaType;
 
-    private String overview;
+    protected Boolean adult;
 
-    @JsonAlias("poster_path")
-    private String posterPath;
-
-    @JsonAlias("release_date")
-    private String releaseDate;
+    protected BigDecimal popularity;
 }
