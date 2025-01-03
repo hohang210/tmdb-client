@@ -296,8 +296,8 @@
             <id>sonar</id>
             <properties>
                 <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-                <sonar.organization>hohang210</sonar.organization>
-                <sonar.projectKey>hohang210_tmdb-client</sonar.projectKey>
+                <sonar.organization>llliiiilll</sonar.organization>
+                <sonar.projectKey>lllIIIIlll_tmdb-client</sonar.projectKey>
                 <sonar.moduleKey>${project.groupId}:${project.artifactId}</sonar.moduleKey>
             </properties>
             <activation>
