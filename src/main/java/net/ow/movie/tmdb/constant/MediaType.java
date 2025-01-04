@@ -1,5 +1,9 @@
-package net.ow.movie.tmdb.dto.constant;
+package net.ow.movie.tmdb.constant;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MediaType {
     public static final String MOVIE = "movie";
 

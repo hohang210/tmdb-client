@@ -3,7 +3,7 @@ package net.ow.move.tmdb.constant;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import net.ow.movie.tmdb.dto.constant.MediaType;
+import net.ow.movie.tmdb.constant.MediaType;
 import org.apache.logging.log4j.util.Strings;
 import org.junit.jupiter.api.Test;
 
